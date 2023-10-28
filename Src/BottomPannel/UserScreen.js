@@ -8,7 +8,7 @@ export function UserScreen({ navigation }) {
         getData();
     }, []);
     const getData = async () => {
-        name = await AsyncStorage.getItem('NUMBER');
+        name = await AsyncStorage.getItem('EMAIL');
         //console.log(name);
         // change number to name
 
@@ -42,7 +42,11 @@ export function UserScreen({ navigation }) {
                 </TouchableOpacity>
             </View>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <TouchableOpacity style={{ width: '60%', height: '15%', justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue', borderRadius: 20 }}>
+                <TouchableOpacity style={{ width: '60%', height: '15%', justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue', borderRadius: 20 }}
+                onPress = {()=>{
+                    navigation.navigate('Login')
+                }}
+                >
                     <Text style={{ fontWeight: 'bold', color: 'white', fontSize: 18 }}>Log Out</Text>
                 </TouchableOpacity>
             </View>

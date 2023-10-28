@@ -10,7 +10,9 @@ import { MainScreen } from '../Src/BottomPannel/MainScreen'
 import { CartScreen } from '../Src/BottomPannel/CartScreen';
 import { SearchScreen } from '../Src/BottomPannel/SearchScreen';
 import { UserScreen } from '../Src/BottomPannel/UserScreen';
-import { WishlistScreen } from '../Src/BottomPannel/WishlistScreen'
+import { WishlistScreen } from '../Src/BottomPannel/WishlistScreen';
+import {ADMIN} from "../Src/AdminPannel"
+import {AdminScreen} from "../Src/AdminScreen"
 const Stack = createStackNavigator();
 //alert("name");
 export function Navigate() {
@@ -19,6 +21,8 @@ export function Navigate() {
             <Stack.Navigator>
                 <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splashscreen}  />
                 <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+                <Stack.Screen options={{ headerShown: false }} name="ADMIN" component={ADMIN} />
+                <Stack.Screen options={{ headerShown: false }} name="AdminScreen" component={AdminScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Signup" component={Signup} />
                 <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
                 <Stack.Screen options={{ headerShown: false }} name="MainScreen" component={MainScreen} />
@@ -26,7 +30,6 @@ export function Navigate() {
                 <Stack.Screen options={{ headerShown: false }} name="Cart" component={CartScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="Wishlist" component={WishlistScreen} />
                 <Stack.Screen options={{ headerShown: false }} name="UserScreen" component={UserScreen} />
-
             </Stack.Navigator>
         </NavigationContainer>
 

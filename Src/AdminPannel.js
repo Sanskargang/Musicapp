@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { View, Text, Image, StyleSheet, StatusBar, TouchableOpacity, Vibration, Alert } from 'react-native'
+import { View, Text, Image, StyleSheet, StatusBar, TouchableOpacity, Vibration, Alert,ImageBackground } from 'react-native'
 import { TextConatainer } from '../CommonElement/TextConatainer';
 import { Button } from '../CommonElement/CommonButton';
-import { Signup } from './Signup';
 import { Theme } from '../CommonElement/Apperence';
 import { Home } from './Home';
 import { Loader } from '../CommonElement/Loader';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-export function Login({ navigation }) {
+//import AsyncStorage from "@react-native-async-storage/async-storage";
+export function ADMIN({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [badEmail, setBadEmail] = useState(false);
@@ -38,15 +37,14 @@ export function Login({ navigation }) {
   }
 
   const getData = async () => {
-    console.log(mEmail, mPass);
-    const mEmail = await AsyncStorage.getItem('EMAIL');
-    const mPass = await AsyncStorage.getItem('PASSWORD');
-    if (email === mEmail && password === mPass) {
+    
+    if (email === 'sanskar' && password === '1234') {
       setModalVisible(false);
-      navigation.navigate('Home');
+      navigation.navigate('AdminScreen');
+      Alert.alert("Admin","You are sucessfull login to admin pannel ");
     }
     else {
-      if (email !== mEmail) {
+      if (email !== 'sanskar') {
         Alert.alert("Email ID", "Please Enter correct email id ");
       }
       setModalVisible(false);
@@ -58,16 +56,11 @@ export function Login({ navigation }) {
 
 
   return (
-    <View style={styles.view}>
-      <StatusBar animated={true} backgroundColor='#faebd7' />
-      <TouchableOpacity style ={{alignSelf:'flex-end',right:10}} onPress = {()=>{
-        navigation.navigate('ADMIN');
-      }}>
-        <Image source={require('../Images/admin.png')} style={styles.admin} />
-      </TouchableOpacity>
-      
-      <Image source={require('../Images/Login.png')} style={styles.image} />
-      <Text style={styles.text1}>Login</Text>
+      <View style={styles.view}>
+      <StatusBar animated={true} backgroundColor='black' />
+        
+      <Image source={require('../Images/appstore4.png')} style={styles.image} />
+      <Text style={styles.text1}>Admin Login</Text>
       <TextConatainer placeholder={"Enter Email ID"} icon={require('../Images/mail.png')}
         value={email}
         onChangeText={(txt) => {
@@ -89,14 +82,12 @@ export function Login({ navigation }) {
       }
       <Button title={'Login'} onPress={() => { login() }} />
       <View style={{ marginTop: '30%' }}>
-        <TouchableOpacity onPress={() => { navigation.navigate('Signup') }}>
-          <Text style={styles.text2}>Create New Account?</Text>
-        </TouchableOpacity>
         <Theme />
       </View>
       <Loader modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
-    
+    // <Button title={'Login'} onPress={() => { login() }} />
+    // <Button title={'Login'} onPress={() => { navigation.navigate('AdminScreen'); }} />
   )
 }
 // to navigate to other screen you must use navgation from function like function make ({navigation}) and the use navigation.navigate('Signup')
@@ -109,7 +100,9 @@ const styles = StyleSheet.create({
     marginTop: '25%',
   },
   image: {
-    borderRadius: 50,
+    borderRadius: 20,
+    height:100,
+    width:100,
   },
   text1: {
     paddingTop: 20,
@@ -134,19 +127,3 @@ const styles = StyleSheet.create({
   },
 })
 
-// const validate = () => {
-  //   // console.log('sanskar');
-  //   if (email == '') {
-  //     setBadEmail(true);
-  //   }
-  //   else {
-  //     setBadEmail(false);
-  //   }
-  //   if (password == '') {
-  //     setBadPassword(true);
-  //   }
-  //   else {
-  //     setBadPassword(false);
-  //   }
-  //   getData();
-  // };
